@@ -1,4 +1,5 @@
-const knex = require("knex")({
+const knex = require("knex")
+({
     client: 'pg',
     version: '7.2',
     connection: {
@@ -10,7 +11,6 @@ const knex = require("knex")({
 });
 
 const second = process.argv.slice(2)[0];
-const db = require('./db');
 
 function printResults(rows) {
     const queryOutput = rows;
@@ -23,10 +23,6 @@ function printResults(rows) {
 }
 
 function getFamousPeople(done) {
-    db.connect((err, client) => {
-        if (err) {
-            return console.error("Connection Error", err);
-        }
         console.log('Searching...');
 
         knex('famous_people')
